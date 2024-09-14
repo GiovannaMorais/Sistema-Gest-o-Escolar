@@ -51,7 +51,7 @@ O projeto é organizado como um monorepo, utilizando o **Turborepo** para gerenc
 
    ```bash
    git clone https://github.com/GiovannaMorais/Sistema-Gestao-Escolar.git
-   cd sistema-gestao-escolar
+   cd Sistema-Gestao-Escolar
 
 ## Rotas da API
 
