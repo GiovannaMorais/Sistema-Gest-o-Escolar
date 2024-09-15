@@ -1,81 +1,110 @@
-# Turborepo starter
+# Sistema de Gestão Escolar
 
-This is an official starter Turborepo.
+Este projeto é um Sistema de Gestão Escolar que permite gerenciar materiais, provas, estudantes, recados e acesso ao sistema com autenticação. O projeto é dividido entre o backend (Node.js com Express, Prisma e PostgreSQL) e o frontend (React com Styled Components). A estrutura do projeto segue o padrão de monopositorio, utilizando o Turborepo.
 
-## Using this example
+## Tecnologias Utilizadas
 
-Run the following command:
+### Backend:
+- **Node.js**: Plataforma para execução do JavaScript no servidor.
+- **Express**: Framework para criar APIs RESTful.
+- **Prisma**: ORM para interação com o banco de dados PostgreSQL.
+- **PostgreSQL**: Banco de dados relacional usado no projeto.
 
-```sh
-npx create-turbo@latest
+  
+### Frontend:
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **Styled Components**: Biblioteca para estilização de componentes React.
+
+
+## Funcionalidades
+
+- **CRUD de Materiais**: Gerenciamento de materiais didáticos da escola.
+- **CRUD de Provas**: Cadastro, edição, consulta e exclusão de provas.
+- **CRUD de Estudantes**: Gerenciamento dos dados dos estudantes.
+- **CRUD de Recados**: Sistema de recados para comunicação entre a escola e os alunos/responsáveis.
+- **Sistema de Login**: Autenticação para usuários do sistema.
+
+## Estrutura do Projeto
+
+O projeto é organizado como um monorepo, utilizando o **Turborepo** para gerenciar o backend e o frontend dentro de um único repositório.
+
+```bash
+.
+├── apps
+│   ├── backend # Backend Node.js + Express + Prisma
+│   └── frontend # Frontend React + Styled Components
+└── 
+...
 ```
 
-## What's inside?
+## Instalação e Configuração
 
-This Turborepo includes the following packages/apps:
+### Pré-requisitos
 
-### Apps and Packages
+- Node.js (>= 14.x)
+- PostgreSQL (>= 12.x)
+- Yarn (ou npm)
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Passo a Passo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+1. **Clone o repositório:**
 
-### Utilities
+   ```bash
+   git clone https://github.com/GiovannaMorais/Sistema-Gestao-Escolar.git
+   cd Sistema-Gestao-Escolar
 
-This Turborepo has some additional tools already setup for you:
+## Rotas da API
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+O backend fornece as seguintes rotas para gerenciamento dos recursos:
 
-### Build
+### Usuários
 
-To build all apps and packages, run the following command:
+- `POST /user` - Criar novo usuário
+- `GET /users` - Listar todos os usuários
+- `GET /user/:id` - Obter um usuário pelo ID
+- `GET /users/:role` - Listar usuários por função (role)
+- `PUT /user/:id` - Atualizar usuário existente
+- `DELETE /user/:id` - Remover usuário
 
-```
-cd my-turborepo
-pnpm build
-```
+### Estudantes
 
-### Develop
+- `GET /students` - Listar todos os estudantes
+- `GET /students/:class` - Listar estudantes por turma
+- `GET /student/:id` - Obter um estudante pelo ID
+- `POST /student` - Criar novo estudante
+- `PUT /student/:id` - Atualizar estudante existente
+- `DELETE /student/:id` - Remover estudante
 
-To develop all apps and packages, run the following command:
+### Materiais
 
-```
-cd my-turborepo
-pnpm dev
-```
+- `GET /materials` - Listar todos os materiais
+- `GET /material/:id` - Obter um material pelo ID
+- `POST /material` - Criar novo material
+- `PUT /material/:id` - Atualizar material existente
+- `DELETE /material/:id` - Remover material
 
-### Remote Caching
+### Provas
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+- `GET /exams` - Listar todas as provas
+- `GET /exams/:class` - Listar provas por turma
+- `GET /exam/:id` - Obter uma prova pelo ID
+- `POST /exam` - Criar nova prova
+- `PUT /exam/:id` - Atualizar prova existente
+- `DELETE /exam/:id` - Remover prova
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+### Recados
 
-```
-cd my-turborepo
-npx turbo login
-```
+- `GET /notices` - Listar todos os recados
+- `GET /notice/:id` - Obter um recado pelo ID
+- `POST /notice` - Criar novo recado
+- `PUT /notice/:id` - Atualizar recado existente
+- `DELETE /notice/:id` - Remover recado
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## Contribuição
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+Contribuições são bem-vindas! Para contribuir com o projeto, siga os passos abaixo:
 
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+1. **Fork** o repositório.
+2. Crie uma **branch** para sua funcionalidade ou correção de bug:
+   ```bash
+   git checkout -b minha-nova-funcionalidade
