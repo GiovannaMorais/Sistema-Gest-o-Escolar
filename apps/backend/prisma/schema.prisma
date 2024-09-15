@@ -53,18 +53,21 @@ model Exam {
 }
 
 model Material {
-  id              Int       @id @default(autoincrement())
-  name            String
-  category        String
-  quantity        Int
-  acquisitionDate DateTime
-  supplier        String
-  condition       Condition
-  storageLocation String
-  description     String
-  link            String?
-  employeeId      Int?
-  employee        Employee? @relation(fields: [employeeId], references: [id])
+  id          Int          @id @default(autoincrement())
+  name        String
+  type        MaterialType // Novo campo para especificar o tipo de material
+  description String
+  link        String? // Link opcional para o material
+  employeeId  Int?
+  employee    Employee?    @relation(fields: [employeeId], references: [id])
+}
+
+enum MaterialType {
+  QUESTIONARIO
+  PDF
+  LISTA_EXERCICIOS
+  VIDEOAULA
+  OUTRO
 }
 
 model Notice {
