@@ -87,10 +87,6 @@ const RegisterForm = () => {
           value={password}
           onChange={handlePasswordChange}
         />
-        {/* <RoleSelect value={role} onChange={handleRoleChange}>
-          <option value="student">Estudante</option>
-          <option value="employee">Funcionário</option>
-        </RoleSelect> */}
         <LoginButton type="submit">Cadastrar</LoginButton>
       </LoginForm>
     </LoginContainer>

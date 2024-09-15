@@ -22,13 +22,13 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    const localUser = JSON.parse(localStorage.getItem("user"));
     const user = await login(email, password);
-    console.log("login", user);
-    if (user.role === "funcionario") {
+    if (user?.role === "funcionario" || localUser?.role === "funcionario") {
       localStorage.setItem("user", JSON.stringify(user));
       navigate("/");
-    } else if (user.role === "aluno") {
-      navigate("/aluno");
+    } else if (user?.role === "aluno" || localUser?.role === "aluno") {
+      navigate("/aluno/menu");
     }
     return;
   };

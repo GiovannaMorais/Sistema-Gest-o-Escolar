@@ -123,8 +123,8 @@ const handleSubmit = async (formData) => {
             <tr>
               <TableHeader>ID</TableHeader>
               <TableHeader>Data</TableHeader>
-              <TableHeader>Turma</TableHeader>
               <TableHeader>Disciplina</TableHeader>
+              <TableHeader>Conteúdo</TableHeader>
               {exams.length !== 0 && <TableHeader>Ação</TableHeader>}
             </tr>
           </thead>

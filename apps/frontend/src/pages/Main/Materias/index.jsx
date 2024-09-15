@@ -21,7 +21,7 @@ import {
 
 import { toast } from "react-toastify";
 
-import { formatDate } from "../../../utils/formatDate";
+import { formattedTipoMaterial, desformatarTipoMaterial } from "../../../utils/formatString.js";
 
 export default function Materias() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -72,12 +72,7 @@ export default function Materias() {
     setIsModalOpen(false);
     const material = {
       name: formData.nomeMaterial,
-      category: formData.categoriaMaterial,
-      quantity: Number(formData.quantidade),
-      acquisitionDate: new Date(formData.dataAquisicao),
-      supplier: formData.fornecedor,
-      condition: formData.condicao.toUpperCase(),
-      storageLocation: formData.localArmazenamento,
+      type: formattedTipoMaterial(formData.tipoMaterial),
       description: formData.descricaoMaterial,
       link: formData.link || null,
       employeeId: null,
@@ -129,12 +124,10 @@ export default function Materias() {
           <thead>
             <tr>
               <TableHeader>ID</TableHeader>
+              <TableHeader>Título</TableHeader>
               <TableHeader>Material</TableHeader>
-              <TableHeader>Data de Aquisição</TableHeader>
-              <TableHeader>Categoria</TableHeader>
-              <TableHeader>Quantidade</TableHeader>
-              <TableHeader>Condição</TableHeader>
-                <TableHeader>Link</TableHeader>
+              <TableHeader>Descrição</TableHeader>
+              <TableHeader>Link</TableHeader>
               {materials.length !== 0 && <TableHeader>Ação</TableHeader>}
             </tr>
           </thead>
@@ -143,10 +136,8 @@ export default function Materias() {
               <tr key={material.id}>
                 <TableData>{material.id}</TableData>
                 <TableData>{material.name}</TableData>
-                <TableData>{formatDate(material.acquisitionDate)}</TableData>
-                <TableData>{material.category}</TableData>
-                <TableData>{material.quantity}</TableData>
-                <TableData>{material.condition}</TableData>
+                <TableData>{desformatarTipoMaterial(material.type)}</TableData>
+                <TableData>{material.description}</TableData>
                 {material.link ? (
                   <TableData>{material.link}</TableData>
                 ) : (

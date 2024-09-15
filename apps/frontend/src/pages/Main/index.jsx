@@ -15,7 +15,6 @@ export default function Main() {
     <Container logo={homeLogo}>
       <SideBar />
       <section>
-        {/* <img src={homeLogo} alt='logo home'/> */}
         <h1>Bem vindo(a) {nome}!</h1>
         <Outlet />
       </section>
